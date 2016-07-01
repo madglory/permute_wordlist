@@ -1,0 +1,14 @@
+Generate 1337 speak permutations of words from a wordlist.
+
+Setup:
+
+Edit the 'leetDict' dictionary in permuteWordlist.py to taste.
+This dictionary maps characters to substitute to their possible substitutions.
+It supports unicode substitutions if you're going to crazytown.
+
+To run:
+
+python permuteWordlist.py input_file.txt output_file.txt
+
+See the examples directory for an example input file (bare_wordlist.example) and
+output file (permuted_wordlist.example). Output can get pretty sizable.
