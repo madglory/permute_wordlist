@@ -3,42 +3,30 @@
 import argparse
 
 leetDict = {
-  'a': ['a', 'A', '@', '4', 'À'],
-  'b': ['b', 'B', 'I3', 'l3', 'i3'],
-  'c': ['c', 'C', '(', 'k', 'K'],
-  'd': ['d', 'D'],
-  'e': ['e', 'E', '3'],
-  'f': ['f', 'F', 'ph', 'pH', 'Ph', 'PH'],
-  'g': ['g', 'G', '6'],
-  'h': ['h', 'H', '#'],
-  'i': ['i', 'I', 'l', '!', '1'],
-  'j': ['j', 'J'],
-  'k': ['k', 'K', '(', 'c', 'C'],
-  'l': ['l', 'L', '1', '!', 'i'],
-  'm': ['m', 'M'],
-  'n': ['n', 'N'],
-  'o': ['o', 'O', '0'],
-  'p': ['p', 'P'],
-  'q': ['q', 'Q', '9'],
-  'r': ['r', 'R'],
-  's': ['s', 'S', '$', '5'],
-  't': ['t', 'T', '7', '+'],
-  'u': ['u', 'U', 'v', 'V'],
-  'v': ['v', 'V', 'u', 'U'],
-  'w': ['w', 'W', 'vv', 'VV'],
-  'x': ['x', 'X'],
-  'y': ['y', 'Y'],
-  'z': ['z', 'Z', '2']
+  'c': ['c', '(', 'k', 'K'],
+  'f': ['f', 'ph', 'pH', 'Ph', 'PH'],
+  'i': ['i', 'l', '!', '1'],
+  'k': ['k', '(', 'c', 'C'],
+  'l': ['l', '1', '!', 'i'],
+  'u': ['u', 'v', 'V'],
+  'v': ['v', 'u', 'U'],
+  'w': ['w', 'vv', 'VV']
 }
 
 def permute(dictWord):
   if len(dictWord) > 0:
     currentLetter = dictWord[0]
     restOfWord = dictWord[1:]
-    if len(restOfWord) > 0:
-      perms = [s + p for s in leetDict[currentLetter] for p in permute(restOfWord)]
+
+    if currentLetter in leetDict:
+        substitutions = leetDict[currentLetter]
     else:
-      perms = leetDict[currentLetter]
+        substitutions = [currentLetter]
+
+    if len(restOfWord) > 0:
+      perms = [s + p for s in substitutions for p in permute(restOfWord)]
+    else:
+      perms = substitutions
     return perms
 
 parser = argparse.ArgumentParser(description='Permutate words of a wordlist.')
