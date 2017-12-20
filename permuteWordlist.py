@@ -19,7 +19,7 @@ def permute(dictWord):
     restOfWord = dictWord[1:]
 
     if currentLetter in leetDict:
-        substitutions = leetDict[currentLetter]
+        substitutions = leetDict[currentLetter] + [currentLetter]
     else:
         substitutions = [currentLetter]
 
